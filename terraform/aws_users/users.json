@@ -1,0 +1,16 @@
+[
+  {
+    "name": "bhannafi-test-user-2",
+    "s3_prefixes": [
+      "submissions/1d4d15e5-2b8d-404c-b92e-c692a4251e60",
+      "submissions/0aa793b5-45b0-4744-b01b-17db411756c6"
+    ]
+  },
+  {
+    "name": "bhannafi-test-user-3",
+    "s3_prefixes": [
+      "submissions/f5a908d0-6c60-424d-8f53-bfab3c75277e",
+      "submissions/c2b317b3-7148-4918-81f5-547188e1d289"
+    ]
+  }
+]
