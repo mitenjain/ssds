@@ -1,5 +1,9 @@
 # Dependencies: git pandoc moreutils httpie twine
 
+ifndef SSDS_HOME
+$(error Please run "source environment" in the data-store repo root directory before running make commands)
+endif
+
 SHELL=/bin/bash -eo pipefail
 
 release_major:

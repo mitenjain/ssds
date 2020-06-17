@@ -1,0 +1,21 @@
+# Resolve the location of this file and set SSDS_HOME to the root
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
+export SSDS_HOME="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+EXPORT_ENV_VARS_TO_TERRAFORM_ARRAY=(
+    AWS_DEFAULT_REGION
+    GCP_DEFAULT_REGION
+	SSDS_S3_BUCKET
+    SSDS_INFRA_TAGS
+)
+
+set -a
+EXPORT_ENV_VARS_TO_TERRAFORM=${EXPORT_ENV_VARS_TO_TERRAFORM_ARRAY[*]}
+AWS_SDK_LOAD_CONFIG=1 # Needed for Terraform to correctly use AWS assumed roles
+AWS_DEFAULT_REGION="us-west-2"
+TERRAFORM_STATE_BUCKET="terraform-422448306679-${AWS_DEFAULT_REGION}"
+TERRAFORM_STATE_PREFIX="hpp/ssds"
+SSDS_S3_BUCKET="org-hpp-ssds-staging-test"
+SSDS_INFRA_TAGS='{"service": "ssds", "Owner": "bhannafi@ucsc.edu"}'
+set +a
